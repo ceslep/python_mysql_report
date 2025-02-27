@@ -1,0 +1,185 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "send_file",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "pymysql",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pymysql",
+        "description": "pymysql",
+        "detail": "pymysql",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "letter",
+        "importPath": "reportlab.lib.pagesizes",
+        "description": "reportlab.lib.pagesizes",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.pagesizes",
+        "documentation": {}
+    },
+    {
+        "label": "SimpleDocTemplate",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Table",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "TableStyle",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Paragraph",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Spacer",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Paragraph",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "reportlab.lib",
+        "description": "reportlab.lib",
+        "isExtraImport": true,
+        "detail": "reportlab.lib",
+        "documentation": {}
+    },
+    {
+        "label": "getSampleStyleSheet",
+        "importPath": "reportlab.lib.styles",
+        "description": "reportlab.lib.styles",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.styles",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "kind": 2,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "def get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),\n        password=os.getenv(\"MYSQL_PASSWORD\"),\n        database=os.getenv(\"MYSQL_DB\"),\n        port=int(os.getenv(\"MYSQL_PORT\")),\n        cursorclass=pymysql.cursors.DictCursor\n    )\n# Ruta inicial para servir index.html",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "def index():\n    return render_template('index.html')\n# Ruta para buscar un estudiante por código, estudiante o nombres\n@app.route('/buscar', methods=['GET'])\ndef buscar_estudiante():\n    criterio = request.args.get('criterio')\n    if not criterio:\n        return jsonify({\"error\": \"Debe proporcionar un criterio de búsqueda (código, estudiante o nombres)\"}), 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "buscar_estudiante",
+        "kind": 2,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "def buscar_estudiante():\n    criterio = request.args.get('criterio')\n    if not criterio:\n        return jsonify({\"error\": \"Debe proporcionar un criterio de búsqueda (código, estudiante o nombres)\"}), 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:\n        sql_estudiante = \"\"\"\n        SELECT estugrupos.*, sedes.sede\n        FROM estugrupos\n        INNER JOIN (",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "generar_pdf",
+        "kind": 2,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "def generar_pdf():\n    codigo = request.args.get('codigo')\n    if not codigo:\n        return \"Código no proporcionado\", 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:\n        sql_estudiante = \"\"\"\n        SELECT estugrupos.*, sedes.sede \n        FROM estugrupos \n        LEFT JOIN sedes ON estugrupos.asignacion = sedes.ind ",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "app = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),\n        password=os.getenv(\"MYSQL_PASSWORD\"),\n        database=os.getenv(\"MYSQL_DB\"),\n        port=int(os.getenv(\"MYSQL_PORT\")),\n        cursorclass=pymysql.cursors.DictCursor",
+        "detail": "server",
+        "documentation": {}
+    }
+]

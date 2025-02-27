@@ -21,10 +21,10 @@
                 }
                 data.forEach(item => {
                     let row = `<tr>
-                        <td>${item.codigo}</td>
-                        <td>${item.estudiante}</td>
-                        <td>${item.nombres}</td>
-                        <td class="text-center">
+                        <td class="align-middle">${item.codigo}</td>
+                        <td class="align-middle">${item.estudiante}</td>
+                        <td class="align-middle">${item.nombres}</td>
+                        <td class="text-center align-middle">
                             <a href="/generar_pdf?codigo=${item.codigo}" class="btn btn-danger btn-sm" target="_blank">
                                 <i class="bi bi-file-earmark-pdf"></i>
                             </a>
@@ -40,7 +40,7 @@
 </head>
 <body class="bg-light">
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Buscar en la Tabla Estugrupos</h1>
+        <h1 class="text-center mb-4">Imprimir Información Estudiante</h1>
         <div class="input-group mb-3">
             <input type="text" id="search" class="form-control" placeholder="Ingrese código, estudiante o nombre">
             <button class="btn btn-primary" onclick="buscar()">Buscar</button>
@@ -49,10 +49,10 @@
             <table class="table table-bordered table-striped">
                 <thead class="table-dark">
                     <tr>
-                        <th>Código</th>
-                        <th>Estudiante</th>
-                        <th>Nombres</th>
-                        <th class="text-center">PDF</th>
+                        <th class="align-middle">Código</th>
+                        <th class="align-middle">Estudiante</th>
+                        <th class="align-middle">Nombres</th>
+                        <th class="text-center align-middle">PDF</th>
                     </tr>
                 </thead>
                 <tbody id="resultados">

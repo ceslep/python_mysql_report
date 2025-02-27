@@ -6,6 +6,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import Paragraph
 
 # Cargar variables de entorno
 load_dotenv()
@@ -59,6 +60,9 @@ def buscar_estudiante():
         return jsonify({"error": "Estudiante no encontrado"}), 404
 
     return jsonify(estudiante)
+
+
+
 
 # Ruta para generar un PDF con información completa del estudiante
 @app.route('/generar_pdf', methods=['GET'])
@@ -123,7 +127,52 @@ def generar_pdf():
     ]))
     elements.append(table)
     elements.append(Spacer(1, 12))
+
+    data = [
+        ["Teléfono 1 :", estudiante.get("telefono1", "N/A"), "Teléfono 2:", estudiante.get("telefono2", "N/A")],
+        ["Dirección:", estudiante.get("direccion", "N/A"), "Zona y lugar:", estudiante.get("lugar", "N/A")],
+        ["Nivel Sisben:", estudiante.get("sisben", "N/A"), "Estrato:", estudiante.get("estrato", "N/A")],
+        ["RGSS", estudiante.get("eps", "N/A"), "Activo:", estudiante.get("activo", "N/A")],
+        ["Banda:", estudiante.get("banda", "N/A"), "Desertor:", estudiante.get("desertor", "N/A")],
+        ["Estado anterior:", estudiante.get("eanterior", "N/A"), "Estado:", estudiante.get("estado", "N/A")],  # Se expandirá en la tabla
+    ]
     
+    # Crear tabla sin líneas
+    table = Table(data, colWidths=[110, 180, 110, 150])
+    table.setStyle(TableStyle([
+        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
+        ('FONTNAME', (0, 0), (0,-1), 'Helvetica-Bold'),  # Negrilla en primera columna
+        ('FONTNAME', (2, 0), (2, -1), 'Helvetica-Bold'),  # Negrilla en primera columna
+        ('FONTNAME', (3, 0), (3, 0), 'Helvetica-Bold'),  # Negrilla en tercera columna
+    ]))
+    elements.append(table)
+    elements.append(Spacer(1, 12))
+
+    elements.append(Paragraph("Información Académica", styles['Title']))
+    elements.append(Spacer(1, 12))
+
+    data = [
+    ["Asignación:", estudiante.get("asignacion", "N/A"), "Nivel:", estudiante.get("nivel", "N/A")],
+    ["Número:", estudiante.get("numero", "N/A"), "", ""],
+    ["Sede Actual:", estudiante.get("sede", "N/A"), "", ""],  # Dos celdas vacías para mantener el formato
+    ]
+    table = Table(data, colWidths=[110, 180, 110, 150])
+    table.setStyle(TableStyle([
+        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
+        ('FONTNAME', (0, 0), (0,-1), 'Helvetica-Bold'),  # Negrilla en primera columna
+        ('FONTNAME', (2, 0), (2, -1), 'Helvetica-Bold'),  # Negrilla en primera columna
+        ('FONTNAME', (3, 0), (3, 0), 'Helvetica-Bold'),  # Negrilla en tercera columna
+        ('WORDWRAP', (0, 0), (-1, -1), True),
+    ]))
+    
+    elements.append(table)
+    elements.append(Paragraph("Institución Externa", styles['Title']))
+    elements.append(Paragraph(estudiante.get("institucion_externa", styles['Title'])))
+    elements.append(Spacer(1, 12))
+    elements.append(Paragraph("Otra Información", styles['Title']))
+    elements.append(Paragraph(estudiante.get("otraInformacion", styles['Title'])))
     # Generar PDF
     doc.build(elements)
     return send_file(pdf_path, as_attachment=True)
