@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buscar Estudiantes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        async function buscar() {
+            let query = document.getElementById("search").value;
+            try {
+                let response = await fetch(`/buscar?criterio=${query}`);
+                let data = await response.json();
+                console.log(data)
+                let resultados = document.getElementById("resultados");
+                resultados.innerHTML = "";
+                if (data.length === 0) {
+                    resultados.innerHTML = `<tr><td colspan="4" class="text-center">No se encontraron resultados</td></tr>`;
+                    return;
+                }
+                data.forEach(item => {
+                    let row = `<tr>
+                        <td>${item.codigo}</td>
+                        <td>${item.estudiante}</td>
+                        <td>${item.nombres}</td>
+                        <td class="text-center">
+                            <a href="/generar_pdf?codigo=${item.codigo}" class="btn btn-danger btn-sm" target="_blank">
+                                <i class="bi bi-file-earmark-pdf"></i>
+                            </a>
+                        </td>
+                    </tr>`;
+                    resultados.innerHTML += row;
+                });
+            } catch (error) {
+                console.error("Error al buscar:", error);
+            }
+        }
+    </script>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Buscar en la Tabla Estugrupos</h1>
+        <div class="input-group mb-3">
+            <input type="text" id="search" class="form-control" placeholder="Ingrese código, estudiante o nombre">
+            <button class="btn btn-primary" onclick="buscar()">Buscar</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Código</th>
+                        <th>Estudiante</th>
+                        <th>Nombres</th>
+                        <th class="text-center">PDF</th>
+                    </tr>
+                </thead>
+                <tbody id="resultados">
+                    <tr><td colspan="4" class="text-center">Realiza una búsqueda</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
