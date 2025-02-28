@@ -66,7 +66,7 @@
         "documentation": {}
     },
     {
-        "label": "letter",
+        "label": "legal",
         "importPath": "reportlab.lib.pagesizes",
         "description": "reportlab.lib.pagesizes",
         "isExtraImport": true,
@@ -138,6 +138,22 @@
         "documentation": {}
     },
     {
+        "label": "ParagraphStyle",
+        "importPath": "reportlab.lib.styles",
+        "description": "reportlab.lib.styles",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.styles",
+        "documentation": {}
+    },
+    {
+        "label": "inch",
+        "importPath": "reportlab.lib.units",
+        "description": "reportlab.lib.units",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.units",
+        "documentation": {}
+    },
+    {
         "label": "get_db_connection",
         "kind": 2,
         "importPath": "server",
@@ -151,7 +167,7 @@
         "kind": 2,
         "importPath": "server",
         "description": "server",
-        "peekOfCode": "def index():\n    return render_template('index.html')\n# Ruta para buscar un estudiante por código, estudiante o nombres\n@app.route('/buscar', methods=['GET'])\ndef buscar_estudiante():\n    criterio = request.args.get('criterio')\n    if not criterio:\n        return jsonify({\"error\": \"Debe proporcionar un criterio de búsqueda (código, estudiante o nombres)\"}), 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:",
+        "peekOfCode": "def index():\n    return render_template('index.html')\n# Ruta para buscar un estudiante por código, estudiante o nombres\n@app.route('/buscar', methods=['GET'])\ndef buscar_estudiante():\n    criterio = request.args.get('criterio')\n    partes = criterio.split('-')\n    if not criterio:\n        return jsonify({\"error\": \"Debe proporcionar un criterio de búsqueda (código, estudiante o nombres)\"}), 400\n    conexion = get_db_connection()",
         "detail": "server",
         "documentation": {}
     },
@@ -160,7 +176,16 @@
         "kind": 2,
         "importPath": "server",
         "description": "server",
-        "peekOfCode": "def buscar_estudiante():\n    criterio = request.args.get('criterio')\n    if not criterio:\n        return jsonify({\"error\": \"Debe proporcionar un criterio de búsqueda (código, estudiante o nombres)\"}), 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:\n        sql_estudiante = \"\"\"\n        SELECT estugrupos.*, sedes.sede\n        FROM estugrupos\n        INNER JOIN (",
+        "peekOfCode": "def buscar_estudiante():\n    criterio = request.args.get('criterio')\n    partes = criterio.split('-')\n    if not criterio:\n        return jsonify({\"error\": \"Debe proporcionar un criterio de búsqueda (código, estudiante o nombres)\"}), 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:\n        if len(partes) == 3:\n            # Si hay tres partes (asignacion-nivel-numero)\n            asignacion, nivel, numero = partes",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "agregar_recuadro",
+        "kind": 2,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "def agregar_recuadro(canvas, doc):\n    # Obtener las dimensiones de la página\n    ancho, alto = legal\n    # Calcular las coordenadas del rectángulo\n    x1 = margen_izquierdo\n    y1 = margen_inferior\n    x2 = ancho - margen_derecho\n    y2 = alto - margen_superior\n    # Dibujar el rectángulo\n    canvas.rect(x1, y1, x2 - x1, y2 - y1)",
         "detail": "server",
         "documentation": {}
     },
@@ -170,6 +195,42 @@
         "importPath": "server",
         "description": "server",
         "peekOfCode": "def generar_pdf():\n    codigo = request.args.get('codigo')\n    if not codigo:\n        return \"Código no proporcionado\", 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:\n        sql_estudiante = \"\"\"\n        SELECT estugrupos.*, sedes.sede \n        FROM estugrupos \n        LEFT JOIN sedes ON estugrupos.asignacion = sedes.ind ",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "margen_izquierdo",
+        "kind": 5,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "margen_izquierdo = por_margen * inch\nmargen_derecho = por_margen * inch\nmargen_superior = por_margen * inch\nmargen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "margen_derecho",
+        "kind": 5,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "margen_derecho = por_margen * inch\nmargen_superior = por_margen * inch\nmargen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "margen_superior",
+        "kind": 5,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "margen_superior = por_margen * inch\nmargen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "margen_inferior",
+        "kind": 5,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "margen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),\n        password=os.getenv(\"MYSQL_PASSWORD\"),",
         "detail": "server",
         "documentation": {}
     },
