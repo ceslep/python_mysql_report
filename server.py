@@ -71,6 +71,7 @@ def buscar_estudiante():
         ) AS ultimos ON estugrupos.codigo = ultimos.codigo AND estugrupos.year = ultimos.max_year
         LEFT JOIN sedes ON estugrupos.asignacion = sedes.ind
         WHERE estugrupos.asignacion = %s AND estugrupos.nivel = %s AND estugrupos.numero = %s
+        and year=year(curdate())
         ORDER BY nombres
     """
 
@@ -92,6 +93,7 @@ def buscar_estudiante():
         ) AS ultimos ON estugrupos.codigo = ultimos.codigo AND estugrupos.year = ultimos.max_year
         LEFT JOIN sedes ON estugrupos.asignacion = sedes.ind
         WHERE estugrupos.nivel = %s AND estugrupos.numero = %s
+        and year=year(curdate())
         ORDER BY nombres
     """
 
@@ -110,6 +112,7 @@ def buscar_estudiante():
         ) AS ultimos ON estugrupos.codigo = ultimos.codigo AND estugrupos.year = ultimos.max_year
         LEFT JOIN sedes ON estugrupos.asignacion = sedes.ind
         WHERE estugrupos.codigo LIKE %s OR estugrupos.estudiante LIKE %s OR estugrupos.nombres LIKE %s
+        and year=year(curdate())
         ORDER BY nombres
     """
 
@@ -200,7 +203,7 @@ def generar_pdf():
     ]
 
     # Crear tabla sin líneas
-    table = Table(data, colWidths=[110, 180, 110, 150], rowHeights=12)
+    table = Table(data, colWidths=[110, 200, 110, 130], rowHeights=12)
     table.setStyle(TableStyle([
         # Alinea el contenido en la parte superior
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
