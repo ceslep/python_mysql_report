@@ -1,3 +1,5 @@
+#python -m waitress --listen=0.0.0.0:8000 server:app
+
 from flask import Flask, request, render_template, jsonify, send_file
 import pymysql
 import os
@@ -294,14 +296,23 @@ def generar_pdf():
         parent=styles['Normal'],
         alignment=0
     )
-    elements.append(Paragraph("Institución Externa", styles['Title']))
-    elements.append(Paragraph(estudiante.get(
-        "institucion_externa", mi_estilo)))
-    elements.append(Spacer(1, 10))
-    elements.append(Paragraph("Otra Información", styles['Title']))
+    iexterna=estudiante.get(
+        "institucion_externa", "N/A")
+    if iexterna!="":    
+        elements.append(Paragraph("Institución Externa", styles['Title']))
+        elements.append(Paragraph(iexterna, mi_estilo))
+        elements.append(Spacer(1, 10))
 
-    elements.append(Paragraph(estudiante.get("otraInformacion", mi_estilo)))
-    elements.append(Spacer(1, 10))
+
+    otraInformacion=estudiante.get(
+        "otraInformacion", "N/A")
+
+    if otraInformacion!="":
+        elements.append(Spacer(1, 10))
+        elements.append(Paragraph("Otra Información", styles['Title']))
+        elements.append(Paragraph(otraInformacion, mi_estilo))
+        elements.append(Spacer(1, 10))
+
     elements.append(Paragraph("Padres y Acudientes", styles['Title']))
     elements.append(Spacer(1, 10))
     data = [
