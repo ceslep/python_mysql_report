@@ -40,6 +40,46 @@
         "documentation": {}
     },
     {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "send_file",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "pymysql",
         "kind": 6,
         "isExtraImport": true,
@@ -63,6 +103,22 @@
         "description": "dotenv",
         "isExtraImport": true,
         "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "legal",
+        "importPath": "reportlab.lib.pagesizes",
+        "description": "reportlab.lib.pagesizes",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.pagesizes",
         "documentation": {}
     },
     {
@@ -122,6 +178,62 @@
         "documentation": {}
     },
     {
+        "label": "SimpleDocTemplate",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Table",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "TableStyle",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Paragraph",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Spacer",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Paragraph",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "reportlab.lib",
+        "description": "reportlab.lib",
+        "isExtraImport": true,
+        "detail": "reportlab.lib",
+        "documentation": {}
+    },
+    {
         "label": "colors",
         "importPath": "reportlab.lib",
         "description": "reportlab.lib",
@@ -143,6 +255,30 @@
         "description": "reportlab.lib.styles",
         "isExtraImport": true,
         "detail": "reportlab.lib.styles",
+        "documentation": {}
+    },
+    {
+        "label": "getSampleStyleSheet",
+        "importPath": "reportlab.lib.styles",
+        "description": "reportlab.lib.styles",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.styles",
+        "documentation": {}
+    },
+    {
+        "label": "ParagraphStyle",
+        "importPath": "reportlab.lib.styles",
+        "description": "reportlab.lib.styles",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.styles",
+        "documentation": {}
+    },
+    {
+        "label": "inch",
+        "importPath": "reportlab.lib.units",
+        "description": "reportlab.lib.units",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.units",
         "documentation": {}
     },
     {
@@ -241,6 +377,96 @@
         "description": "server",
         "peekOfCode": "app = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),\n        password=os.getenv(\"MYSQL_PASSWORD\"),\n        database=os.getenv(\"MYSQL_DB\"),\n        port=int(os.getenv(\"MYSQL_PORT\")),\n        cursorclass=pymysql.cursors.DictCursor",
         "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "kind": 2,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "def get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),\n        password=os.getenv(\"MYSQL_PASSWORD\"),\n        database=os.getenv(\"MYSQL_DB\"),\n        port=int(os.getenv(\"MYSQL_PORT\")),\n        cursorclass=pymysql.cursors.DictCursor\n    )\n# Ruta inicial para servir index.html",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "def index():\n    return render_template('index.html')\n# Ruta para buscar un estudiante por código, estudiante o nombres\n@app.route('/buscar', methods=['GET'])\ndef buscar_estudiante():\n    criterio = request.args.get('criterio')\n    partes = criterio.split('-')\n    if not criterio:\n        return jsonify({\"error\": \"Debe proporcionar un criterio de búsqueda (código, estudiante o nombres)\"}), 400\n    conexion = get_db_connection()",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "buscar_estudiante",
+        "kind": 2,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "def buscar_estudiante():\n    criterio = request.args.get('criterio')\n    partes = criterio.split('-')\n    if not criterio:\n        return jsonify({\"error\": \"Debe proporcionar un criterio de búsqueda (código, estudiante o nombres)\"}), 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:\n        if len(partes) == 3:\n            # Si hay tres partes (asignacion-nivel-numero)\n            asignacion, nivel, numero = partes",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "agregar_recuadro",
+        "kind": 2,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "def agregar_recuadro(canvas, doc):\n    # Obtener las dimensiones de la página\n    ancho, alto = legal\n    # Calcular las coordenadas del rectángulo\n    x1 = margen_izquierdo\n    y1 = margen_inferior\n    x2 = ancho - margen_derecho\n    y2 = alto - margen_superior\n    # Dibujar el rectángulo\n    canvas.rect(x1, y1, x2 - x1, y2 - y1)",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "generar_pdf",
+        "kind": 2,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "def generar_pdf():\n    codigo = request.args.get('codigo')\n    if not codigo:\n        return \"Código no proporcionado\", 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:\n        sql_estudiante = \"\"\"\n        SELECT estugrupos.*, sedes.sede \n        FROM estugrupos \n        LEFT JOIN sedes ON estugrupos.asignacion = sedes.ind ",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "margen_izquierdo",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "margen_izquierdo = por_margen * inch\nmargen_derecho = por_margen * inch\nmargen_superior = por_margen * inch\nmargen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "margen_derecho",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "margen_derecho = por_margen * inch\nmargen_superior = por_margen * inch\nmargen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "margen_superior",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "margen_superior = por_margen * inch\nmargen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "margen_inferior",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "margen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),\n        password=os.getenv(\"MYSQL_PASSWORD\"),",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "app = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),\n        password=os.getenv(\"MYSQL_PASSWORD\"),\n        database=os.getenv(\"MYSQL_DB\"),\n        port=int(os.getenv(\"MYSQL_PORT\")),\n        cursorclass=pymysql.cursors.DictCursor",
+        "detail": "tempCodeRunnerFile",
         "documentation": {}
     }
 ]
