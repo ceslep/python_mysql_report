@@ -40,46 +40,6 @@
         "documentation": {}
     },
     {
-        "label": "Flask",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "request",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "render_template",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "jsonify",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "send_file",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
         "label": "pymysql",
         "kind": 6,
         "isExtraImport": true,
@@ -106,22 +66,6 @@
         "documentation": {}
     },
     {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "legal",
-        "importPath": "reportlab.lib.pagesizes",
-        "description": "reportlab.lib.pagesizes",
-        "isExtraImport": true,
-        "detail": "reportlab.lib.pagesizes",
-        "documentation": {}
-    },
-    {
         "label": "legal",
         "importPath": "reportlab.lib.pagesizes",
         "description": "reportlab.lib.pagesizes",
@@ -170,7 +114,7 @@
         "documentation": {}
     },
     {
-        "label": "Paragraph",
+        "label": "Image",
         "importPath": "reportlab.platypus",
         "description": "reportlab.platypus",
         "isExtraImport": true,
@@ -178,23 +122,7 @@
         "documentation": {}
     },
     {
-        "label": "SimpleDocTemplate",
-        "importPath": "reportlab.platypus",
-        "description": "reportlab.platypus",
-        "isExtraImport": true,
-        "detail": "reportlab.platypus",
-        "documentation": {}
-    },
-    {
-        "label": "Table",
-        "importPath": "reportlab.platypus",
-        "description": "reportlab.platypus",
-        "isExtraImport": true,
-        "detail": "reportlab.platypus",
-        "documentation": {}
-    },
-    {
-        "label": "TableStyle",
+        "label": "Frame",
         "importPath": "reportlab.platypus",
         "description": "reportlab.platypus",
         "isExtraImport": true,
@@ -207,30 +135,6 @@
         "description": "reportlab.platypus",
         "isExtraImport": true,
         "detail": "reportlab.platypus",
-        "documentation": {}
-    },
-    {
-        "label": "Spacer",
-        "importPath": "reportlab.platypus",
-        "description": "reportlab.platypus",
-        "isExtraImport": true,
-        "detail": "reportlab.platypus",
-        "documentation": {}
-    },
-    {
-        "label": "Paragraph",
-        "importPath": "reportlab.platypus",
-        "description": "reportlab.platypus",
-        "isExtraImport": true,
-        "detail": "reportlab.platypus",
-        "documentation": {}
-    },
-    {
-        "label": "colors",
-        "importPath": "reportlab.lib",
-        "description": "reportlab.lib",
-        "isExtraImport": true,
-        "detail": "reportlab.lib",
         "documentation": {}
     },
     {
@@ -258,22 +162,6 @@
         "documentation": {}
     },
     {
-        "label": "getSampleStyleSheet",
-        "importPath": "reportlab.lib.styles",
-        "description": "reportlab.lib.styles",
-        "isExtraImport": true,
-        "detail": "reportlab.lib.styles",
-        "documentation": {}
-    },
-    {
-        "label": "ParagraphStyle",
-        "importPath": "reportlab.lib.styles",
-        "description": "reportlab.lib.styles",
-        "isExtraImport": true,
-        "detail": "reportlab.lib.styles",
-        "documentation": {}
-    },
-    {
         "label": "inch",
         "importPath": "reportlab.lib.units",
         "description": "reportlab.lib.units",
@@ -282,11 +170,19 @@
         "documentation": {}
     },
     {
-        "label": "inch",
-        "importPath": "reportlab.lib.units",
-        "description": "reportlab.lib.units",
+        "label": "TA_CENTER",
+        "importPath": "reportlab.lib.enums",
+        "description": "reportlab.lib.enums",
         "isExtraImport": true,
-        "detail": "reportlab.lib.units",
+        "detail": "reportlab.lib.enums",
+        "documentation": {}
+    },
+    {
+        "label": "TA_JUSTIFY",
+        "importPath": "reportlab.lib.enums",
+        "description": "reportlab.lib.enums",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.enums",
         "documentation": {}
     },
     {
@@ -326,11 +222,56 @@
         "documentation": {}
     },
     {
+        "label": "construir_encabezado",
+        "kind": 2,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "def construir_encabezado():\n    \"\"\"\n    Genera una tabla de 2 filas x 3 columnas que reproduce el encabezado\n    tal como se ve en la imagen:\n      --------------------------------------------------------------\n      | escudo.png    | SECRETARÍA DE EDUCACIÓN...  | Página: 1... |\n      | (col 0, row0) | INSTITUCIÓN EDUCATIVA...     | Código...    |\n      |               | NIT...                       | v.02         |\n      |               |                               | 26/01/2012   |\n      --------------------------------------------------------------",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "construir_tabla_firmas",
+        "kind": 2,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "def construir_tabla_firmas():\n    \"\"\"\n    Retorna una tabla (3 filas x 2 columnas) con el título FIRMAS en la primera fila (fusionada)\n    y luego las líneas para Alumno, Padre/Acudiente, Rector y Secretaria.\n    \"\"\"\n    styles = getSampleStyleSheet()\n    style_center = ParagraphStyle(\n        name='CenterStyle',\n        parent=styles['Normal'],\n        fontName='Helvetica',",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "dibujar_footer",
+        "kind": 2,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "def dibujar_footer(canvas, doc):\n    \"\"\"\n    Dibuja en el canvas el texto de contacto (teléfonos, e-mail, dirección)\n    centrado en la parte inferior de la página, con letra pequeña.\n    \"\"\"\n    canvas.saveState()\n    # Ajusta el tamaño de fuente y tipo\n    canvas.setFont(\"Helvetica\", 8)  # Letra pequeña\n    # Obtenemos el ancho y alto de la página actual\n    # (Si usas \"legal\", ajusta a: width, height = legal)",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "dibujar_informacion_acudiente",
+        "kind": 2,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "def dibujar_informacion_acudiente(canvas, doc, x=6.5*inch, y=0.18*inch, width=1.5*inch, height=2.2*inch):\n    \"\"\"\n    Dibuja un texto en un Frame a partir de (x, y), con un ancho y alto especificados.\n    El texto se ajusta (wrap) automáticamente al ancho del Frame.\n    Parámetros:\n    - canvas: el objeto canvas de ReportLab (lo recibe en onFirstPage / onLaterPages).\n    - doc: el objeto de documento (SimpleDocTemplate, etc.).\n    - x, y: coordenadas de la esquina inferior izquierda del Frame (en puntos).\n    - width: ancho del Frame en puntos.\n    - height: alto del Frame en puntos.",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
         "label": "generar_pdf",
         "kind": 2,
         "importPath": "server",
         "description": "server",
         "peekOfCode": "def generar_pdf():\n    codigo = request.args.get('codigo')\n    if not codigo:\n        return \"Código no proporcionado\", 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:\n        sql_estudiante = \"\"\"\n        SELECT estugrupos.*, sedes.sede \n        FROM estugrupos \n        LEFT JOIN sedes ON estugrupos.asignacion = sedes.ind ",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "por_margen",
+        "kind": 5,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "por_margen = 0.3\nmargen_izquierdo = por_margen * inch\nmargen_derecho = por_margen * inch\nmargen_superior = por_margen * inch\nmargen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():",
         "detail": "server",
         "documentation": {}
     },
@@ -377,96 +318,6 @@
         "description": "server",
         "peekOfCode": "app = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),\n        password=os.getenv(\"MYSQL_PASSWORD\"),\n        database=os.getenv(\"MYSQL_DB\"),\n        port=int(os.getenv(\"MYSQL_PORT\")),\n        cursorclass=pymysql.cursors.DictCursor",
         "detail": "server",
-        "documentation": {}
-    },
-    {
-        "label": "get_db_connection",
-        "kind": 2,
-        "importPath": "tempCodeRunnerFile",
-        "description": "tempCodeRunnerFile",
-        "peekOfCode": "def get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),\n        password=os.getenv(\"MYSQL_PASSWORD\"),\n        database=os.getenv(\"MYSQL_DB\"),\n        port=int(os.getenv(\"MYSQL_PORT\")),\n        cursorclass=pymysql.cursors.DictCursor\n    )\n# Ruta inicial para servir index.html",
-        "detail": "tempCodeRunnerFile",
-        "documentation": {}
-    },
-    {
-        "label": "index",
-        "kind": 2,
-        "importPath": "tempCodeRunnerFile",
-        "description": "tempCodeRunnerFile",
-        "peekOfCode": "def index():\n    return render_template('index.html')\n# Ruta para buscar un estudiante por código, estudiante o nombres\n@app.route('/buscar', methods=['GET'])\ndef buscar_estudiante():\n    criterio = request.args.get('criterio')\n    partes = criterio.split('-')\n    if not criterio:\n        return jsonify({\"error\": \"Debe proporcionar un criterio de búsqueda (código, estudiante o nombres)\"}), 400\n    conexion = get_db_connection()",
-        "detail": "tempCodeRunnerFile",
-        "documentation": {}
-    },
-    {
-        "label": "buscar_estudiante",
-        "kind": 2,
-        "importPath": "tempCodeRunnerFile",
-        "description": "tempCodeRunnerFile",
-        "peekOfCode": "def buscar_estudiante():\n    criterio = request.args.get('criterio')\n    partes = criterio.split('-')\n    if not criterio:\n        return jsonify({\"error\": \"Debe proporcionar un criterio de búsqueda (código, estudiante o nombres)\"}), 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:\n        if len(partes) == 3:\n            # Si hay tres partes (asignacion-nivel-numero)\n            asignacion, nivel, numero = partes",
-        "detail": "tempCodeRunnerFile",
-        "documentation": {}
-    },
-    {
-        "label": "agregar_recuadro",
-        "kind": 2,
-        "importPath": "tempCodeRunnerFile",
-        "description": "tempCodeRunnerFile",
-        "peekOfCode": "def agregar_recuadro(canvas, doc):\n    # Obtener las dimensiones de la página\n    ancho, alto = legal\n    # Calcular las coordenadas del rectángulo\n    x1 = margen_izquierdo\n    y1 = margen_inferior\n    x2 = ancho - margen_derecho\n    y2 = alto - margen_superior\n    # Dibujar el rectángulo\n    canvas.rect(x1, y1, x2 - x1, y2 - y1)",
-        "detail": "tempCodeRunnerFile",
-        "documentation": {}
-    },
-    {
-        "label": "generar_pdf",
-        "kind": 2,
-        "importPath": "tempCodeRunnerFile",
-        "description": "tempCodeRunnerFile",
-        "peekOfCode": "def generar_pdf():\n    codigo = request.args.get('codigo')\n    if not codigo:\n        return \"Código no proporcionado\", 400\n    conexion = get_db_connection()\n    with conexion.cursor() as cursor:\n        sql_estudiante = \"\"\"\n        SELECT estugrupos.*, sedes.sede \n        FROM estugrupos \n        LEFT JOIN sedes ON estugrupos.asignacion = sedes.ind ",
-        "detail": "tempCodeRunnerFile",
-        "documentation": {}
-    },
-    {
-        "label": "margen_izquierdo",
-        "kind": 5,
-        "importPath": "tempCodeRunnerFile",
-        "description": "tempCodeRunnerFile",
-        "peekOfCode": "margen_izquierdo = por_margen * inch\nmargen_derecho = por_margen * inch\nmargen_superior = por_margen * inch\nmargen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(",
-        "detail": "tempCodeRunnerFile",
-        "documentation": {}
-    },
-    {
-        "label": "margen_derecho",
-        "kind": 5,
-        "importPath": "tempCodeRunnerFile",
-        "description": "tempCodeRunnerFile",
-        "peekOfCode": "margen_derecho = por_margen * inch\nmargen_superior = por_margen * inch\nmargen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),",
-        "detail": "tempCodeRunnerFile",
-        "documentation": {}
-    },
-    {
-        "label": "margen_superior",
-        "kind": 5,
-        "importPath": "tempCodeRunnerFile",
-        "description": "tempCodeRunnerFile",
-        "peekOfCode": "margen_superior = por_margen * inch\nmargen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),",
-        "detail": "tempCodeRunnerFile",
-        "documentation": {}
-    },
-    {
-        "label": "margen_inferior",
-        "kind": 5,
-        "importPath": "tempCodeRunnerFile",
-        "description": "tempCodeRunnerFile",
-        "peekOfCode": "margen_inferior = por_margen * inch\n# Cargar variables de entorno\nload_dotenv()\napp = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),\n        password=os.getenv(\"MYSQL_PASSWORD\"),",
-        "detail": "tempCodeRunnerFile",
-        "documentation": {}
-    },
-    {
-        "label": "app",
-        "kind": 5,
-        "importPath": "tempCodeRunnerFile",
-        "description": "tempCodeRunnerFile",
-        "peekOfCode": "app = Flask(__name__)\n# Conexión a la base de datos\ndef get_db_connection():\n    return pymysql.connect(\n        host=os.getenv(\"MYSQL_HOST\"),\n        user=os.getenv(\"MYSQL_USER\"),\n        password=os.getenv(\"MYSQL_PASSWORD\"),\n        database=os.getenv(\"MYSQL_DB\"),\n        port=int(os.getenv(\"MYSQL_PORT\")),\n        cursorclass=pymysql.cursors.DictCursor",
-        "detail": "tempCodeRunnerFile",
         "documentation": {}
     }
 ]
