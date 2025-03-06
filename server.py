@@ -155,6 +155,7 @@ def agregar_recuadro(canvas, doc):
     alto_qr = 100
 
     canvas.drawImage("images/qrcode.jpg", x_qr, y_qr, width=ancho_qr, height=alto_qr)
+   # canvas.drawImage("images/rector.png", 50, 100, width=ancho_qr, height=alto_qr)
    # dibujar_informacion_acudiente(canvas, doc,x=x_qr,y=y_qr)
 
 
