@@ -270,7 +270,11 @@ def construir_tabla_firmas():
     fila2 = [alumno, padre]
 
     # Fila 3: Rector | Secretaria
-    rector = Paragraph("_______________________<br/>Rector", style_center)
+    rector = Paragraph("""
+    <img src="images/rector.png" width="100" height="50" /><br/>
+    _______________________<br/>
+    Rector
+    """, style_center)
     secretaria = Paragraph("", style_center)
     fila3 = [rector, secretaria]
 
@@ -526,7 +530,8 @@ def generar_pdf():
     mi_estilo = ParagraphStyle(
         'LeftAligned',
         parent=styles['Normal'],
-        alignment=0
+        alignment=0,
+        fontSize=7
     )
     iexterna = estudiante.get(
         "institucion_externa", "N/A")
